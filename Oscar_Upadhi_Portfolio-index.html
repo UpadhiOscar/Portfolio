@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Oscar Upadhi — Writer & Content Strategist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:     #0E0E0E;
+    --off:     #F7F5F0;
+    --cream:   #EDE9E0;
+    --gold:    #B8913A;
+    --gold-lt: #D4A94E;
+    --mid:     #6B6560;
+    --rule:    #D5CFC4;
+    --white:   #FFFFFF;
+    --serif:   'Playfair Display', Georgia, serif;
+    --sans:    'Inter', system-ui, sans-serif;
+    --mono:    'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--off);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    height: 64px;
+    background: rgba(247,245,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-brand {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 64px;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 64px 80px 80px;
+    background: var(--ink);
+    color: var(--off);
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--gold-lt);
+  }
+  .hero-tagline {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: #C8C2B8;
+    max-width: 380px;
+    line-height: 1.75;
+    margin-bottom: 40px;
+  }
+  .hero-tags {
+    display: flex; flex-wrap: wrap; gap: 10px;
+  }
+  .tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border: 1px solid rgba(184,145,58,0.5);
+    color: var(--gold-lt);
+    border-radius: 2px;
+  }
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 64px;
+    background: var(--cream);
+  }
+  .hero-pull {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 2.2vw, 2rem);
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--ink);
+    border-left: 3px solid var(--gold);
+    padding-left: 28px;
+    margin-bottom: 32px;
+  }
+  .hero-sub {
+    font-size: 0.95rem;
+    color: var(--mid);
+    max-width: 380px;
+    line-height: 1.8;
+  }
+  .hero-cta {
+    margin-top: 36px;
+    display: inline-block;
+    background: var(--gold);
+    color: var(--white);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s;
+    align-self: flex-start;
+  }
+  .hero-cta:hover { background: var(--gold-lt); }
+
+  /* ── SECTION WRAPPER ── */
+  section { padding: 96px 80px; }
+  section:nth-child(even) { background: var(--cream); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .section-subtitle {
+    font-size: 1rem;
+    color: var(--mid);
+    max-width: 580px;
+    line-height: 1.75;
+    margin-bottom: 56px;
+  }
+  .divider {
+    width: 48px; height: 2px;
+    background: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about-body p {
+    font-size: 1rem;
+    color: #2A2A2A;
+    line-height: 1.85;
+    margin-bottom: 20px;
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 8px;
+  }
+  .stat-card {
+    background: var(--ink);
+    color: var(--off);
+    padding: 28px 24px;
+    border-radius: 3px;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--gold-lt);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-desc {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #A09A94;
+  }
+
+  /* ── WRITING SAMPLES ── */
+  .samples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 28px;
+  }
+  .sample-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 36px 32px;
+    cursor: pointer;
+    transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .sample-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .sample-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+    transform: translateY(-3px);
+    border-color: var(--gold);
+  }
+  .sample-card:hover::before { transform: scaleX(1); }
+
+  .sample-category {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .sample-title {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .sample-excerpt {
+    font-size: 0.88rem;
+    color: var(--mid);
+    line-height: 1.75;
+    margin-bottom: 24px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .read-more {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .read-more::after { content: '→'; }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(14,14,14,0.75);
+    backdrop-filter: blur(6px);
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--white);
+    max-width: 680px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    border-radius: 4px;
+    padding: 56px 52px;
+    position: relative;
+  }
+  .modal-close {
+    position: absolute; top: 20px; right: 24px;
+    background: none; border: none;
+    font-size: 1.4rem; cursor: pointer; color: var(--mid);
+    line-height: 1;
+  }
+  .modal-close:hover { color: var(--ink); }
+  .modal-cat {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .modal-title {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 28px;
+  }
+  .modal-body p {
+    font-size: 0.97rem;
+    line-height: 1.9;
+    color: #1E1E1E;
+    margin-bottom: 18px;
+  }
+  .modal-body blockquote {
+    border-left: 3px solid var(--gold);
+    padding: 6px 0 6px 20px;
+    margin: 24px 0;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
+
+  /* ── SERVICES ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--rule);
+  }
+  .service-item {
+    background: var(--off);
+    padding: 40px 36px;
+  }
+  .service-icon {
+    font-size: 1.6rem;
+    margin-bottom: 18px;
+  }
+  .service-name {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .service-desc {
+    font-size: 0.87rem;
+    color: var(--mid);
+    line-height: 1.75;
+  }
+
+  /* ── CONTACT ── */
+  .contact-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .contact-inner .section-title { font-size: clamp(2rem, 4vw, 3rem); }
+  .contact-detail {
+    display: inline-block;
+    margin-top: 32px;
+    font-size: 1rem;
+    color: var(--mid);
+  }
+  .contact-detail a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .contact-detail a:hover { text-decoration: underline; }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+  }
+  .contact-btn {
+    display: inline-block;
+    padding: 13px 28px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .contact-btn.primary { background: var(--gold); color: var(--white); }
+  .contact-btn.primary:hover { background: var(--gold-lt); }
+  .contact-btn.outline { border: 1.5px solid var(--gold); color: var(--gold); }
+  .contact-btn.outline:hover { background: var(--gold); color: var(--white); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: #7A7470;
+    text-align: center;
+    padding: 32px;
+    font-size: 0.8rem;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { gap: 20px; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 80px 32px 48px; }
+    .hero-right { padding: 48px 32px 80px; }
+    section { padding: 64px 32px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .modal { padding: 36px 28px; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .samples-grid { grid-template-columns: 1fr; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">Oscar Upadhi</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Portfolio · Content Strategist & Writer</div>
+    <h1 class="hero-name">Oscar<br/><em>Upadhi</em></h1>
+    <p class="hero-tagline">I write things that make people stop scrolling, start thinking, and actually feel something.</p>
+    <div class="hero-tags">
+      <span class="tag">Copywriting</span>
+      <span class="tag">Thought Leadership</span>
+      <span class="tag">Ghostwriting</span>
+      <span class="tag">Speeches</span>
+      <span class="tag">Content Strategy</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <p class="hero-pull">"Stop explaining the architecture. Just build the house and let them stare."</p>
+    <p class="hero-sub">Writing that earns attention rather than demanding it. Sharp, structured, and built to move people — whether it's a LinkedIn post, a brand story, or a keynote speech.</p>
+    <a class="hero-cta" href="#writing">View Writing Samples</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Who I Am</div>
+  <div class="divider"></div>
+  <div class="about-grid">
+    <div class="about-body">
+      <h2 class="section-title">Writer. Strategist.<br/>Communicator.</h2>
+      <p>I'm Oscar Upadhi — a content writer and strategist with a background in History and Diplomacy. I've spent years studying how ideas move people, how narratives shape perception, and how the right sentence at the right moment can be worth more than a thousand paragraphs of noise.</p>
+      <p>My writing spans thought leadership for professionals and executives, brand storytelling, motivational content, ghostwriting, and creative pieces that sit at the intersection of philosophy, culture, and clarity.</p>
+      <p>I believe the hardest thing in writing isn't adding more — it's knowing exactly what to take away. Every piece I produce is built around that standard.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-num">6+</div>
+        <div class="stat-desc">Thought Leadership Pieces</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5+</div>
+        <div class="stat-desc">Years Creating Content</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3</div>
+        <div class="stat-desc">Content Specialties</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">∞</div>
+        <div class="stat-desc">Ideas in the Pipeline</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WRITING SAMPLES -->
+<section id="writing" style="background: var(--off);">
+  <div class="section-label">Writing Samples</div>
+  <div class="divider"></div>
+  <h2 class="section-title">Selected Work</h2>
+  <p class="section-subtitle">Thought leadership essays, strategic commentary, and philosophical writing. Each piece is designed to provoke reflection and drive engagement.</p>
+
+  <div class="samples-grid">
+
+    <div class="sample-card" onclick="openModal('m1')">
+      <div class="sample-category">Thought Leadership · Minimalism & Craft</div>
+      <h3 class="sample-title">The Art of Taking Away</h3>
+      <p class="sample-excerpt">Anyone can create a system full of features, jargon, and moving parts. The difficult thing is constructing something so clear and inevitable that it appears effortless. A clean violin performance is harder than noisy virtuosity...</p>
+      <span class="read-more">Read Piece</span>
+    </div>
+
+    <div class="sample-card" onclick="openModal('m2')">
+      <div class="sample-category">Personal Branding · Clarity</div>
+      <h3 class="sample-title">Stop Explaining the Architecture</h3>
+      <p class="sample-excerpt">Imagine you've mapped out your week — the technical side, the creative strategy, the time spent executing. On paper, it's a tight operation. Then you try to summarize it for a friend. They blink and change the subject...</p>
+      <span class="read-more">Read Piece</span>
+    </div>
+
+    <div class="sample-card" onclick="openModal('m3')">
+      <div class="sample-category">Productivity · Strategy</div>
+      <h3 class="sample-title">The Inflation of Intentions</h3>
+      <p class="sample-excerpt">You spend far too much time refining your plan. You treat your upcoming strategy like a masterpiece, polishing every detail, anticipating every objection. You believe that by meticulously planning, you are reducing risk. In reality, you are just increasing the interest rate on your inaction...</p>
+      <span class="read-more">Read Piece</span>
+    </div>
+
+    <div class="sample-card" onclick="openModal('m4')">
+      <div class="sample-category">Leadership · Momentum</div>
+      <h3 class="sample-title">The Friction of the Starting Line</h3>
+      <p class="sample-excerpt">We often wait for clarity before we move. We wait for the perfect plan, the perfect timing, the perfect amount of confidence. We treat our careers like a car parked on a steep hill, refusing to take our foot off the brake until we are 100% certain of the destination...</p>
+      <span class="read-more">Read Piece</span>
+    </div>
+
+    <div class="sample-card" onclick="openModal('m5')">
+      <div class="sample-category">Leadership · Depth vs. Noise</div>
+      <h3 class="sample-title">Stop Mistaking Noise for Momentum</h3>
+      <p class="sample-excerpt">We often associate volume with value. We think the person who dominates the meeting, the one who broadcasts every minor win, is the one driving the business forward. But in physics — and in leadership — noise is usually a sign of friction, not force...</p>
+      <span class="read-more">Read Piece</span>
+    </div>
+
+    <div class="sample-card" onclick="openModal('m6')">
+      <div class="sample-category">Performance · Systems Thinking</div>
+      <h3 class="sample-title">Why Your Hard Work Yields Soft Results</h3>
+      <p class="sample-excerpt">We are taught that more effort equals more output. We think if we just push harder against the wall, it will eventually move. But in a complex system, effort is often a vanity metric. You can reinforce 99% of the wall, but the water doesn't care about the 99%...</p>
+      <span class="read-more">Read Piece</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What I Do</div>
+  <div class="divider"></div>
+  <h2 class="section-title">Services</h2>
+  <p class="section-subtitle">Built for professionals, brands, and visionaries who need words that actually work.</p>
+  <div class="services-grid">
+    <div class="service-item">
+      <div class="service-icon">✍️</div>
+      <div class="service-name">Copywriting</div>
+      <div class="service-desc">Ad scripts, landing page copy, email sequences, and brand messaging. Writing that converts because it connects first.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-icon">💡</div>
+      <div class="service-name">Thought Leadership</div>
+      <div class="service-desc">LinkedIn articles, executive essays, and opinion pieces that build authority and spark genuine conversation.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-icon">🎤</div>
+      <div class="service-name">Speeches & Motivation</div>
+      <div class="service-desc">Keynotes, commencement addresses, and motivational talks that resonate because they are anchored in truth, not clichés.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-icon">👤</div>
+      <div class="service-name">Ghostwriting</div>
+      <div class="service-desc">Your ideas, your voice — fully realized. I write books, articles, and social content on behalf of executives and professionals.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-icon">📱</div>
+      <div class="service-name">Content Strategy</div>
+      <div class="service-desc">Editorial planning, platform strategy, and content frameworks that create consistency and compound over time.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-icon">🎬</div>
+      <div class="service-name">Creative Writing</div>
+      <div class="service-desc">Scripts, narratives, and long-form storytelling that blend philosophical depth with cultural immediacy.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background: var(--ink); color: var(--off);">
+  <div class="contact-inner">
+    <div class="section-label" style="color: var(--gold);">Let's Work</div>
+    <div class="divider"></div>
+    <h2 class="section-title" style="color: var(--off);">Ready to build something worth reading?</h2>
+    <p class="contact-detail">
+      Port Harcourt, Nigeria &nbsp;·&nbsp; Available for remote projects worldwide<br/><br/>
+      <a href="mailto:upadhi.oscar@gmail.com">upadhi.oscar@gmail.com</a><br/>
+      <a href="tel:+2349078466425">+234 907 846 6425</a>
+    </p>
+    <div class="contact-links">
+      <a class="contact-btn primary" href="mailto:upadhi.oscar@gmail.com">Send an Email</a>
+      <a class="contact-btn outline" href="https://www.linkedin.com/in/upadhi-oscar-65a0a6178" target="_blank">LinkedIn Profile</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Oscar Upadhi · Writer & Content Strategist · Port Harcourt, Nigeria</p>
+</footer>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal-box">
+    <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    <div class="modal-cat" id="modal-cat"></div>
+    <h2 class="modal-title" id="modal-title"></h2>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+const pieces = {
+  m1: {
+    cat: "Thought Leadership · Minimalism & Craft",
+    title: "The Art of Taking Away",
+    body: `
+      <p>Anyone can create a system full of features, jargon, moving parts, explanations, and contingencies. The difficult thing is constructing something so clear and inevitable that it appears effortless.</p>
+      <p>A clean violin performance is harder than noisy virtuosity.<br/>
+      A memorable melody is harder than random technical runs.<br/>
+      A usable product is harder than an overbuilt one.<br/>
+      A short sentence that changes a life is harder than ten pages of abstraction.</p>
+      <blockquote>"Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away." — Antoine de Saint-Exupéry</blockquote>
+      <p>That is the standard. Not addition. Subtraction. The discipline to remove until only the essential remains.</p>
+    `
+  },
+  m2: {
+    cat: "Personal Branding · Clarity",
+    title: "Stop Explaining the Architecture",
+    body: `
+      <p>Imagine you've just mapped out your week — the technical side of your project, the creative strategy, the actual time spent executing. On paper, it's a tight, solid operation.</p>
+      <p>Then, you try to summarize it for a friend. You start talking about the nuance of the craft, the backend of the strategy, the specific goals you're chasing. They just look at you, blink, and change the subject.</p>
+      <p>It's a strange feeling: putting in work that consumes your entire focus, only to realize that to the outside world, it's invisible.</p>
+      <p>We hide behind complex labels because we think it adds weight. It doesn't. If the value isn't obvious the moment you step into the room, you aren't being complex — you're being noisy.</p>
+      <p>You are a brand, and you are the only one responsible for its integrity. If others don't grasp the strategy, that's not always a failure of communication; it could also be a difference in the scope of operations. But either way — it's your problem to solve.</p>
+      <p>Stop trying to convince the room to understand your process. Just show them the results and let them catch up.</p>
+      <blockquote>Stop explaining the architecture. Just build the house and let them stare.</blockquote>
+    `
+  },
+  m3: {
+    cat: "Productivity · Strategy",
+    title: "The Inflation of Intentions",
+    body: `
+      <p>You spend far too much time refining your "plan." You treat your upcoming strategy like a masterpiece, polishing every detail, anticipating every objection, and socializing the idea until it feels safe. You believe that by meticulously planning, you are reducing risk.</p>
+      <p>In reality, you are just increasing the interest rate on your inaction.</p>
+      <p>Intentions are not assets. They are liabilities that bleed energy the longer they sit in your mind without being converted into market pressure.</p>
+      <p>When you spend more time designing the bridge than building it, you aren't a strategist — you are a tourist. Every hour you spend "refining" is an hour where the market is moving past you. Your plan is only as good as the first piece of data you get after you start executing.</p>
+      <p>You think you need to be certain before you act. The truth is, you only gain certainty after you encounter resistance. You don't find the flaws in your logic by thinking about them — you find them when your work hits the market and fails to yield. Embrace that friction. It is the only real teacher.</p>
+      <p>Every day you hold back is a day where the compounding interest of your momentum remains at zero. High performance isn't about being right — it's about being fast enough to correct. The elite don't wait for a perfect launch; they launch to find out how to be perfect.</p>
+      <blockquote>Are you still polishing your intentions, or are you ready to expose them to the market?</blockquote>
+    `
+  },
+  m4: {
+    cat: "Leadership · Momentum",
+    title: "The Friction of the Starting Line",
+    body: `
+      <p>We often wait for clarity before we move. We wait for the perfect plan, the perfect timing, or the perfect amount of confidence. We treat our careers like a car parked on a steep hill, refusing to take our foot off the brake until we are 100% certain of the destination.</p>
+      <p>But clarity is a consequence of movement, not a prerequisite for it.</p>
+      <p>When you are stationary, every decision feels heavy. The one-degree turn is impossible because there is no velocity to work with. But once you are in motion — once you have committed to a path and started the engine — the steering becomes light. You can adjust, pivot, and refine your course with ease because you have the power of momentum behind you.</p>
+      <p>Standing still is the most expensive mistake you can make. While you are waiting for the perfect direction, the world is moving past you. A moving car can be redirected; a parked car just gathers dust.</p>
+      <p>Elite progress is rarely a straight line. It is a series of constant, small corrections. You don't need to be right at the start; you just need to be moving so that your steering actually has an effect.</p>
+      <p>Momentum creates its own energy. It turns hard work into flow. The faster you move, the easier it becomes to see the obstacles ahead and steer around them before they become crises.</p>
+      <blockquote>Are you waiting for the perfect turn while your engine is off, or are you moving fast enough to steer?</blockquote>
+    `
+  },
+  m5: {
+    cat: "Leadership · Depth vs. Noise",
+    title: "Stop Mistaking Noise for Momentum",
+    body: `
+      <p>We often associate volume with value. We think the person who dominates the meeting, the one who broadcasts every minor win, or the one constantly splashing around is the one driving the business forward.</p>
+      <p>But in physics — and in leadership — noise is usually a sign of friction, not force.</p>
+      <p>In hydraulics, shallow water makes noise because it lacks the volume to move over obstacles; it has to hit them and splash. Deep water doesn't splash. It simply moves the obstacle, or flows over it with a smooth, quiet, and irresistible force.</p>
+      <p>Shallow water splashes because it is thin. In the workplace, constant "shouting" is often a compensation for a lack of volume in actual results. When your impact is massive, you don't need to describe it — people can feel the ground shake.</p>
+      <p>Noise is wasted energy. The time spent announcing the work is time taken away from the work itself. True authority has a quiet surface. It is the steady, unshakeable movement of a professional who knows that their results speak a language much louder than their voice ever could.</p>
+      <blockquote>Stop trying to make a splash. Focus on building the depth. When you are deep enough, the world will feel your movement without you saying a word.</blockquote>
+    `
+  },
+  m6: {
+    cat: "Performance · Systems Thinking",
+    title: "Why Your Hard Work Yields Soft Results",
+    body: `
+      <p>We are taught that more effort equals more output. We think if we just push harder against the wall, it will eventually move. We treat every problem with the same level of intensity, hoping that sheer volume will solve the friction.</p>
+      <p>But in a complex system, effort is often a vanity metric.</p>
+      <p>You can reinforce 99% of the wall, but the water doesn't care about the 99%. It only searches for the 1% you neglected. Most professionals spend 90% of their time improving things that aren't actually holding them back, while ignoring the tiny structural crack that will eventually sink the project.</p>
+      <p>We often fix what is loud rather than what is broken. A drop in sales is just the water splashing over the top — the real issue is the structural integrity at the base.</p>
+      <p>In any process, there is exactly one constraint at any given time that limits the total output. Until you find and fix that specific point, all other improvements are just expensive decorations.</p>
+      <p>The most effective leaders don't work the hardest — they look the longest. They hunt for the single point of failure where a small adjustment prevents a total collapse.</p>
+      <blockquote>Stop trying to strengthen the parts of your life that are already working. Start being obsessed with the one hidden crack that is actually stopping you. Are you fighting the river, or are you fixing the dam?</blockquote>
+    `
+  }
+};
+
+function openModal(id) {
+  const p = pieces[id];
+  document.getElementById('modal-cat').textContent = p.cat;
+  document.getElementById('modal-title').textContent = p.title;
+  document.getElementById('modal-body').innerHTML = p.body;
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModalDirect();
+}
+function closeModalDirect() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
+</script>
+</body>
+</html>
